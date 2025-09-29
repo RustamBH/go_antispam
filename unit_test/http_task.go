@@ -1,9 +1,7 @@
 // http_task.go
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 // MaskURL маскирует часть URL после протокола
 func MaskURL(url []byte) []byte {
@@ -16,6 +14,7 @@ func MaskURL(url []byte) []byte {
 		rs[i] = '*'
 	}
 	url = []byte(string(rs))
+	
 	return url
 }
 
@@ -26,5 +25,6 @@ func main() {
 	masked := MaskURL(url)
 	fmt.Println(string(masked))
 }
+
 
 
