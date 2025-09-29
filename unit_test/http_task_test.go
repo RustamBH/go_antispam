@@ -15,6 +15,11 @@ func TestMaskURL(t *testing.T) {
 			expected: "http://*******************",
 		},
 		{
+			name:     "URL with hTTp",
+			input:    "hTTp://youth-elixir.com",
+			expected: "hTTp://youth-elixir.com",
+		},		
+		{
 			name:     "URL with Cyrillic",
 			input:    "http://Привет.net",
 			expected: "http://**********",
@@ -81,3 +86,4 @@ func TestMaskURL_EdgeCases(t *testing.T) {
 		})
 	}
 }
+
