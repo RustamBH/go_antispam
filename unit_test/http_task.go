@@ -11,10 +11,11 @@ func MaskURL(url []byte) string {
 		return string(url)
 	}
 
-	for i := 7; i < len(url); i++ {
-		url[i] = '*'
+	out := []rune(string(url))
+	for i := 7; i < len(out); i++ {
+		out[i] = '*'
 	}
-	return string(url)
+	return string(out)
 }
 
 func main() {
@@ -24,8 +25,3 @@ func main() {
 	masked := MaskURL(url)
 	fmt.Println(masked)
 }
-
-
-
-
-
