@@ -3,7 +3,7 @@ package main
 
 import (
 	"fmt"
-	"strings"
+	//"strings"
 )
 
 // MaskURL маскирует часть URL после протокола
@@ -29,6 +29,7 @@ func main() {
 	masked := MaskURL(url)
 	fmt.Println(masked)
 }
+
 
 
 
