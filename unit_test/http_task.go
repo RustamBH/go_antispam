@@ -6,16 +6,17 @@ import (
 )
 
 // MaskURL маскирует часть URL после протокола
-func MaskURL(url []byte) string {
-	if string(url[0:7]) != "http://" {
+func MaskURL(url []byte) []byte {
+	if len(url) <= 7 || string(url[0:7]) != "http://" {
 		return string(url)
 	}
 
-	out := []rune(string(url))
-	for i := 7; i < len(out); i++ {
-		out[i] = '*'
+	rs := []rune(string(url))
+	for i := 7; i < len(url); i++ {
+		rs[i] = '*'
 	}
-	return string(out)
+	url = []byte(string(rs))
+	return url
 }
 
 func main() {
@@ -23,5 +24,6 @@ func main() {
 	//str := "hTTp://youth-elixir.com"
 	url := []byte(str)
 	masked := MaskURL(url)
-	fmt.Println(masked)
+	fmt.Println(string(masked))
 }
+
