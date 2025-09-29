@@ -5,9 +5,9 @@ import "fmt"
 
 // MaskURL маскирует часть URL после протокола
 func MaskURL(url string) string {
-	if len(url) <= 7 {
+	if !strings.HasPrefix(url, "http://") {
 		return url
-	}
+	}	
 
 	out := []rune(url)
 	for i := 7; i < len(out); i++ {
@@ -21,3 +21,4 @@ func main() {
 	masked := MaskURL(url)
 	fmt.Println(masked)
 }
+
