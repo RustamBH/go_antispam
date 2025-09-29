@@ -8,7 +8,12 @@ import (
 
 // MaskURL маскирует часть URL после протокола
 func MaskURL(url string) string {
-	if !strings.HasPrefix(url, "http://") {
+	/*if !strings.HasPrefix(url, "http://") {
+		return url
+	}*/	
+
+	slicePref := url[0:7]	
+	if slicePref != "http://" {
 		return url
 	}	
 
@@ -24,5 +29,6 @@ func main() {
 	masked := MaskURL(url)
 	fmt.Println(masked)
 }
+
 
 
