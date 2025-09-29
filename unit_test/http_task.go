@@ -3,32 +3,28 @@ package main
 
 import (
 	"fmt"
-	//"strings"
 )
 
 // MaskURL маскирует часть URL после протокола
-func MaskURL(url string) string {
-	/*if !strings.HasPrefix(url, "http://") {
-		return url
-	}*/	
-
-	slicePref := url[0:7]	
-	if slicePref != "http://" {
-		return url
-	}	
-
-	out := []rune(url)
-	for i := 7; i < len(out); i++ {
-		out[i] = '*'
+func MaskURL(url []byte) string {
+	if string(url[0:7]) != "http://" {
+		return string(url)
 	}
-	return string(out)
+
+	for i := 7; i < len(url); i++ {
+		url[i] = '*'
+	}
+	return string(url)
 }
 
 func main() {
-	url := "http://hehefouls.netHAHAHA"
+	str := "http://hehefouls.netHAHAHA"
+	//str := "hTTp://youth-elixir.com"
+	url := []byte(str)
 	masked := MaskURL(url)
 	fmt.Println(masked)
 }
+
 
 
 
