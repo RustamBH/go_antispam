@@ -12,7 +12,7 @@ func MaskURL(url []byte) []byte {
 	}
 
 	rs := []rune(string(url))
-	for i := 7; i < len(url); i++ {
+	for i := 7; i < len(rs); i++ {
 		rs[i] = '*'
 	}
 	url = []byte(string(rs))
@@ -26,4 +26,5 @@ func main() {
 	masked := MaskURL(url)
 	fmt.Println(string(masked))
 }
+
 
